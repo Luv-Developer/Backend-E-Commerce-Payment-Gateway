@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce | Products</title>
+</head>
+<body>
+    <h2><%= username %> welcome to product section!</h2>
+    <h3 id = "totalCart">Total Cart Amount: 0</h3>
+    <button id = "PlaceCart">Place your Cart</button>
+    <button id = "ClearCart">Clear Cart</button>
+    <div>
+        <br><br>
+        <div style="border: 2px solid black; width: 300px; padding: 5px 10px;">
+            <h4>Jeans</h4>
+            <h5>Price: ₹240</h5>
+            <a href = "/buy/240/Jeans">Buy Now</a>
+            <button id= "JeansButton">Add to Cart</button>
+            <button id = "JeansRemove">Remove from Cart</button>
+        </div>
+        <br><br>
+        <div style="border: 2px solid black; width: 300px; padding: 5px 10px;">
+            <h4>Hoodie</h4>
+            <h5>Price: ₹100</h5>
+            <a href = "/buy/100/Hoodie">Buy Now</a>
+            <button id = "HoodieButton">Add to Cart</button>
+            <button id = "HoodieRemove">Remove from Cart</button>
+        </div>
+        <br><br>
+        <div style="border: 2px solid black; width: 300px; padding: 5px 10px;">
+            <h4>Shirt</h4>
+            <h5>Price: ₹150</h5>
+            <a href = "/buy/150/Shirt">Buy Now</a>
+            <button id = "ShirtButton">Add to Cart</button>
+            <button id = "ShirtRemove">Remove from Cart</button>
+        </div>
+    </div>
+    <script>
+        let totalCart = document.getElementById("totalCart")
+        let JeansButton = document.getElementById("JeansButton")
+        let HoodieButton = document.getElementById("HoodieButton")
+        let ShirtButton = document.getElementById("ShirtButton")
+        let PlaceCart = document.getElementById("PlaceCart")
+        let JeansRemove = document.getElementById("JeansRemove")
+        let HoodieRemove = document.getElementById("HoodieRemove")
+        let ShirtRemove = document.getElementById("ShirtRemove")
+        let ClearCart = document.getElementById("ClearCart")
+
+
+        let Cart = 0
+        JeansButton.addEventListener("click",()=>{
+            Cart = Cart + 240
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        HoodieButton.addEventListener("click",()=>{
+            Cart = Cart + 100
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        ShirtButton.addEventListener("click",()=>{
+            Cart = Cart + 150
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        JeansRemove.addEventListener("click",()=>{
+            if(Cart<=0){
+            }
+            else{
+                Cart = Cart - 240
+            }
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        HoodieRemove.addEventListener("click",()=>{
+            if(Cart<=0){
+            }
+            else{
+                Cart = Cart - 100
+            }
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        ShirtRemove.addEventListener("click",()=>{
+            if(Cart<=0){
+            }
+            else{
+                Cart = Cart - 150
+            }
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        ClearCart.addEventListener("click",()=>{
+            Cart = 0 
+            totalCart.innerText = `Total Cart Amount: ${Cart}`
+        })
+        PlaceCart.addEventListener("click",()=>{
+            window.location.href = `http://localhost:8000/Cart/${Cart}/Cart`
+        })
+    </script>
+</body>
+</html>
